@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Главная{% endblock %}
+{% block content %}
+<section class="hero card">
+  <div>
+    <span class="badge">✨ Современные онлайн-занятия</span>
+    <h1>Репетитор по математике и информатике</h1>
+    <p class="lead">Помогаю школьникам и студентам уверенно подготовиться к экзаменам, закрыть пробелы в знаниях и выйти на стабильный результат.</p>
+    <div class="cta-row">
+      <a class="button" href="{{ url_for('booking') }}">Записаться на занятие</a>
+      <a class="button button-secondary" href="{{ url_for('contacts') }}">Связаться</a>
+    </div>
+  </div>
+  <div class="feature">
+    <h3>📌 Формат работы</h3>
+    <p>Индивидуальные уроки в онлайн-формате с обратной связью, домашними заданиями и регулярной проверкой прогресса.</p>
+    <p class="form-hint">Первичная консультация и подбор программы — бесплатно.</p>
+  </div>
+</section>
+
+<hr class="separator">
+
+<section class="section">
+  <h2 class="section-title">Услуги</h2>
+  <div class="grid-3">
+    <article class="feature"><h3>🧮 ОГЭ/ЕГЭ</h3><p>Целевая подготовка по структуре экзамена с пробниками и разбором ошибок.</p></article>
+    <article class="feature"><h3>💻 Информатика</h3><p>Алгоритмы, программирование и практика задач от базового до повышенного уровня.</p></article>
+    <article class="feature"><h3>📚 Поддержка по школе/вузу</h3><p>Контрольные, домашние задания, устранение сложных тем и повышение успеваемости.</p></article>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Почему выбирают меня</h2>
+  <div class="grid-2">
+    <article class="feature"><h3>✅ Понятное объяснение</h3><p>Сложные темы объясняются простым языком и закрепляются на практике.</p></article>
+    <article class="feature"><h3>📈 Измеримый прогресс</h3><p>Регулярный контроль результатов и корректировка плана обучения.</p></article>
+  </div>
+</section>
+{% endblock %}

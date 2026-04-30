@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Запись на занятие{% endblock %}
+{% block content %}
+<section class="card form-card">
+  <h2>📝 Запись на занятие</h2>
+  <p class="lead">Оставьте заявку, и я свяжусь с вами для уточнения расписания и целей обучения.</p>
+  <form method="post" class="form">
+    <label>Имя *
+      <input name="name" required value="{{ form.get('name', '') }}" placeholder="Например: Анна">
+    </label>
+    <label>Телефон или Telegram *
+      <input name="contact" required value="{{ form.get('contact', '') }}" placeholder="+7... или @username">
+    </label>
+    <label>Предмет *
+      <input name="subject" required value="{{ form.get('subject', '') }}" placeholder="Математика / Информатика">
+    </label>
+    <label>Удобное время *
+      <input name="lesson_time" required value="{{ form.get('lesson_time', '') }}" placeholder="Будни после 18:00">
+    </label>
+    <label>Комментарий
+      <textarea name="comment" placeholder="Класс, цель подготовки, текущий уровень и т.д.">{{ form.get('comment', '') }}</textarea>
+    </label>
+    <p class="form-hint">* Обязательные поля. Данные используются только для обратной связи по заявке.</p>
+    <button type="submit" class="button">Отправить заявку</button>
+  </form>
+</section>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Контакты{% endblock %}
+{% block content %}
+<section class="card">
+  <h2>📬 Контакты</h2>
+  <p class="lead">Готов ответить на вопросы по формату занятий, стоимости и подбору индивидуальной программы.</p>
+
+  <div class="grid-3">
+    <article class="contact-item">
+      <h3>📞 Телефон</h3>
+      <p>+7 (900) 000-00-00</p>
+      <p class="form-hint">Номер подключён к телефонии Asterisk.</p>
+    </article>
+    <article class="contact-item">
+      <h3>💬 Telegram</h3>
+      <p><a class="button button-secondary" href="https://t.me/example" target="_blank" rel="noreferrer">Написать в Telegram</a></p>
+      <p class="form-hint">Обычно отвечаю в течение дня.</p>
+    </article>
+    <article class="contact-item">
+      <h3>✉️ Email</h3>
+      <p>tutor@example.com</p>
+      <p class="form-hint">Подходит для подробных запросов и документов.</p>
+    </article>
+  </div>
+</section>
+{% endblock %}
