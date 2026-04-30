@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Запись на занятие{% endblock %}
+{% block content %}
+<h2>Форма записи</h2>
+<form method="post" class="form">
+  <label>Имя*
+    <input name="name" required value="{{ form.get('name', '') }}">
+  </label>
+  <label>Телефон или Telegram*
+    <input name="contact" required value="{{ form.get('contact', '') }}">
+  </label>
+  <label>Предмет*
+    <input name="subject" required value="{{ form.get('subject', '') }}">
+  </label>
+  <label>Удобное время*
+    <input name="lesson_time" required value="{{ form.get('lesson_time', '') }}" placeholder="Например: будни после 18:00">
+  </label>
+  <label>Комментарий
+    <textarea name="comment">{{ form.get('comment', '') }}</textarea>
+  </label>
+  <button type="submit" class="button">Отправить заявку</button>
+</form>
+{% endblock %}

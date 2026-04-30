@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Главная{% endblock %}
+{% block content %}
+<section>
+  <h2>Репетитор по математике и информатике</h2>
+  <p>Индивидуальные онлайн-занятия для школьников и студентов.</p>
+</section>
+<section>
+  <h3>Услуги</h3>
+  <ul>
+    <li>Подготовка к ОГЭ/ЕГЭ</li>
+    <li>Подготовка к контрольным и экзаменам</li>
+    <li>Разбор домашних заданий</li>
+  </ul>
+  <p>
+    <a class="button" href="{{ url_for('booking') }}">Записаться</a>
+    <a class="button button-secondary" href="https://t.me/example" target="_blank" rel="noreferrer">Связаться в Telegram</a>
+  </p>
+</section>
+{% endblock %}
