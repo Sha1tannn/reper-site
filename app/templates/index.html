@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% block title %}Онлайн-школа «Самый умный»{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <span class="badge">💡 Обучение для детей 6–18 лет</span>
+    <h1>Онлайн-школа <span class="hero-title-accent">«Самый умный»</span></h1>
+    <p class="lead">Занятия по школьным предметам с понятным планом: подтянуть оценки, закрыть пробелы, подготовиться к ОГЭ/ЕГЭ и вернуть интерес к учёбе.</p>
+    <div class="cta-row">
+      <a class="button" href="{{ url_for('booking') }}">Записаться</a>
+      <a class="button button-secondary" href="{{ telegram_link }}" target="_blank" rel="noreferrer">Связаться в Telegram</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><strong>6–18</strong><span>лет</span></div>
+      <div class="stat"><strong>9+</strong><span>предметов</span></div>
+      <div class="stat"><strong>24/7</strong><span>заявки онлайн</span></div>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-inner">
+      <div class="icon">📚</div>
+      <h2>Центральный интерфейс школы</h2>
+      <p class="muted">Сайт представляет услуги, собирает заявки, передаёт контактные данные администратору и интегрируется с Telegram-ботом для оперативной коммуникации.</p>
+      <div class="pill-row">
+        <span class="pill">Flask</span>
+        <span class="pill">SQLite</span>
+        <span class="pill">Telegram Bot API</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2 class="section-title">Цели обучения</h2>
+    <p class="muted">Подбираем программу под возраст, уровень и ближайшую учебную задачу ребёнка.</p>
+  </div>
+  <div class="grid-4">
+    <article class="feature"><span class="icon">📈</span><h3>Подтянуть оценки</h3><p class="muted">Разобрать сложные темы и закрепить школьную программу.</p></article>
+    <article class="feature"><span class="icon">🎯</span><h3>ОГЭ/ЕГЭ</h3><p class="muted">План подготовки, практика заданий и контроль прогресса.</p></article>
+    <article class="feature"><span class="icon">🧩</span><h3>Закрыть пробелы</h3><p class="muted">Найти слабые места и спокойно восстановить базу.</p></article>
+    <article class="feature"><span class="icon">⭐</span><h3>Развить интерес</h3><p class="muted">Показать предмет на понятных примерах и задачах.</p></article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2 class="section-title">Предметы</h2>
+    <a class="button button-muted" href="{{ url_for('subjects') }}">Открыть каталог</a>
+  </div>
+  <div class="grid-3">
+    <article class="subject-card"><span class="icon">🧮</span><h3>Математика</h3><p class="muted">База, алгебра, геометрия, экзамены.</p></article>
+    <article class="subject-card"><span class="icon">🇬🇧</span><h3>Английский</h3><p class="muted">Грамматика, словарь, разговорная практика.</p></article>
+    <article class="subject-card"><span class="icon">💻</span><h3>Информатика</h3><p class="muted">Алгоритмы, программирование, ОГЭ/ЕГЭ.</p></article>
+  </div>
+</section>
+
+<section class="section highlight card">
+  <div class="section-head">
+    <h2 class="section-title">Как проходит обучение</h2>
+    <p class="muted">Путь ученика простой: заявка → диагностика → подбор преподавателя → регулярные занятия → отслеживание результата.</p>
+  </div>
+  <div class="grid-4">
+    <article class="step-card"><h3>1. Заявка</h3><p class="muted">Родитель оставляет контакт и цель обучения.</p></article>
+    <article class="step-card"><h3>2. Диагностика</h3><p class="muted">Определяем уровень и пробелы.</p></article>
+    <article class="step-card"><h3>3. Занятия</h3><p class="muted">Работаем индивидуально или в мини-группе.</p></article>
+    <article class="step-card"><h3>4. Результат</h3><p class="muted">Фиксируем прогресс и корректируем план.</p></article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2 class="section-title">Форматы занятий</h2>
+    <a class="button button-muted" href="{{ url_for('formats') }}">Подробнее</a>
+  </div>
+  <div class="grid-3">
+    <article class="feature"><span class="icon">👤</span><h3>Индивидуально</h3><p class="muted">Максимум внимания под цель ученика.</p></article>
+    <article class="feature"><span class="icon">👥</span><h3>Мини-группы</h3><p class="muted">Обучение в небольших группах по уровню.</p></article>
+    <article class="feature"><span class="icon">⚡</span><h3>Интенсивы</h3><p class="muted">Быстрая подготовка к контрольным и экзаменам.</p></article>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="section-head">
+    <h2 class="section-title">Преимущества школы</h2>
+    <p class="muted">Делаем обучение понятным для ребёнка и предсказуемым для родителей.</p>
+  </div>
+  <div class="grid-3">
+    <article class="feature"><span class="icon">🗺️</span><h3>Индивидуальный маршрут</h3><p class="muted">План занятий строится по уровню ученика, цели и срокам.</p></article>
+    <article class="feature"><span class="icon">💬</span><h3>Быстрая связь</h3><p class="muted">Заявки и важные вопросы можно оперативно передавать через Telegram.</p></article>
+    <article class="feature"><span class="icon">📊</span><h3>Контроль результата</h3><p class="muted">Фиксируем темы, ошибки и следующий шаг после каждого этапа.</p></article>
+  </div>
+</section>
+
+<section class="section card">
+  <div class="section-head">
+    <h2 class="section-title">Результаты обучения</h2>
+    <p class="muted">Вместо выдуманных отзывов для дипломного прототипа показаны ожидаемые измеримые результаты.</p>
+  </div>
+  <div class="grid-3">
+    <article class="feature"><span class="icon">✅</span><h3>Выше успеваемость</h3><p class="muted">Ученик лучше понимает темы и увереннее выполняет школьные задания.</p></article>
+    <article class="feature"><span class="icon">🧠</span><h3>Системные знания</h3><p class="muted">Материал раскладывается по понятным блокам, а пробелы закрываются последовательно.</p></article>
+    <article class="feature"><span class="icon">🎓</span><h3>Спокойнее экзамены</h3><p class="muted">Появляется план подготовки, практика и уверенность перед ОГЭ/ЕГЭ.</p></article>
+  </div>
+</section>
+
+<section class="section card home-form">
+  <div class="section-head">
+    <h2 class="section-title">Оставить заявку</h2>
+    <p class="muted">Форма отправит данные в систему и, при настройке, уведомит администратора в Telegram.</p>
+  </div>
+  {% include '_booking_form.html' %}
+</section>
+{% endblock %}

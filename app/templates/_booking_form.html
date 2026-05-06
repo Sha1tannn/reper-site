@@ -1,0 +1,29 @@
+<form method="post" action="{{ url_for('booking') }}" class="form">
+  <div class="form-grid">
+    <label>Имя родителя или ученика *
+      <input name="name" required value="{{ form.get('name', '') }}" placeholder="Например: Анна">
+    </label>
+    <label>Телефон или Telegram *
+      <input name="contact" required value="{{ form.get('contact', '') }}" placeholder="+7... или @username">
+    </label>
+    <label>Возраст ученика *
+      <input name="student_age" required value="{{ form.get('student_age', '') }}" placeholder="Например: 12 лет">
+    </label>
+    <label>Предмет *
+      <select name="subject" required>
+        <option value="">Выберите предмет</option>
+        {% for subject in ['Математика', 'Русский язык', 'Английский язык', 'Физика', 'Химия', 'Биология', 'История', 'Обществознание', 'Информатика'] %}
+          <option value="{{ subject }}" {% if form.get('subject') == subject %}selected{% endif %}>{{ subject }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>Удобное время *
+      <input name="lesson_time" required value="{{ form.get('lesson_time', '') }}" placeholder="Будни после 18:00">
+    </label>
+  </div>
+  <label>Комментарий
+    <textarea name="comment" placeholder="Класс, цель обучения, пробелы, подготовка к ОГЭ/ЕГЭ и т.д.">{{ form.get('comment', '') }}</textarea>
+  </label>
+  <p class="form-hint">* Обязательные поля. Отправляя заявку, вы соглашаетесь с обработкой данных для связи по обучению.</p>
+  <button type="submit" class="button">Отправить заявку</button>
+</form>
