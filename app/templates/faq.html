@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}FAQ — «Самый умный»{% endblock %}
+{% block content %}
+<section class="card highlight">
+  <span class="badge">❓ FAQ</span>
+  <h1>Частые вопросы</h1>
+  <p class="lead">Короткие ответы о записи, формате занятий, переносах и связи через Telegram.</p>
+</section>
+
+<section class="section">
+  <details class="faq-item" open>
+    <summary>Как проходит занятие?</summary>
+    <p>Занятие проходит онлайн: ученик подключается по ссылке, преподаватель объясняет тему, разбирает задания и даёт рекомендации для самостоятельной практики.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Что нужно для обучения?</summary>
+    <p>Нужны интернет, компьютер или планшет, тетрадь для записей и готовность заранее отправить тему или домашнее задание.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Можно ли перенести урок?</summary>
+    <p>Да, перенос возможен по договорённости с администратором. Правила переноса можно уточнить перед оплатой абонемента.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Как записаться?</summary>
+    <p>Заполните форму на странице записи или на главной странице. Заявка сохранится в системе и может быть отправлена администратору в Telegram.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Как работает связь через Telegram?</summary>
+    <p>После настройки Telegram Bot API Flask-приложение отправляет данные заявки в чат администратора, чтобы быстрее связаться с родителем или учеником.</p>
+  </details>
+</section>
+
+<section class="section card">
+  <h2>Не нашли ответ?</h2>
+  <p class="muted">Напишите в Telegram или оставьте заявку — администратор уточнит детали и поможет подобрать формат обучения.</p>
+  <div class="cta-row">
+    <a class="button" href="{{ url_for('booking') }}">Оставить заявку</a>
+    <a class="button button-secondary" href="{{ telegram_link }}" target="_blank" rel="noreferrer">Telegram</a>
+  </div>
+</section>
+{% endblock %}

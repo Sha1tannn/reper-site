@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Контакты — «Самый умный»{% endblock %}
+{% block content %}
+<section class="card highlight">
+  <span class="badge">📬 Контакты</span>
+  <h1>Свяжитесь с онлайн-школой</h1>
+  <p class="lead">Ответим на вопросы по предметам, форматам занятий, абонементам и подключению к первому уроку.</p>
+</section>
+
+<section class="section">
+  <div class="grid-3">
+    <article class="contact-item">
+      <span class="icon">📞</span>
+      <h3>Телефон</h3>
+      <p>+7 (900) 000-00-00</p>
+      <p class="muted">Номер может быть подключён к Asterisk для IVR и обработки звонков.</p>
+    </article>
+    <article class="contact-item">
+      <span class="icon">💬</span>
+      <h3>Telegram</h3>
+      <p><a class="button button-secondary" href="{{ telegram_link }}" target="_blank" rel="noreferrer">Написать в Telegram</a></p>
+      <p class="muted">Удобный канал для быстрых вопросов и уведомлений.</p>
+    </article>
+    <article class="contact-item">
+      <span class="icon">✉️</span>
+      <h3>Email</h3>
+      <p>school@example.com</p>
+      <p class="muted">Подходит для документов, подробных запросов и обратной связи.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section card">
+  <h2>Как быстрее получить ответ?</h2>
+  <p class="muted">Оставьте заявку на сайте или напишите в Telegram: укажите возраст ребёнка, предмет и цель обучения. Так администратор быстрее предложит подходящий формат.</p>
+  <div class="cta-row">
+    <a class="button" href="{{ url_for('booking') }}">Заполнить заявку</a>
+    <a class="button button-muted" href="{{ url_for('faq') }}">Открыть FAQ</a>
+  </div>
+</section>
+{% endblock %}

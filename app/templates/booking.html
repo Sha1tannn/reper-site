@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Запись на занятие — «Самый умный»{% endblock %}
+{% block content %}
+<section class="card form-card highlight">
+  <span class="badge">📝 Онлайн-заявка</span>
+  <h1>Запись на занятие</h1>
+  <p class="lead">Оставьте контакты, возраст ребёнка и предмет. Администратор уточнит детали, подберёт формат и отправит информацию преподавателю.</p>
+  {% include '_booking_form.html' %}
+</section>
+{% endblock %}
