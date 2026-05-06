@@ -13,6 +13,9 @@ BASE_DIR = Path(__file__).resolve().parent
 DB_PATH = BASE_DIR / "requests.db"
 
 
+TELEGRAM_LINK = "https://t.me/example"
+
+
 def create_app() -> Flask:
     app = Flask(__name__)
     app.config["SECRET_KEY"] = os.getenv("FLASK_SECRET_KEY", "dev-secret-change-me")
@@ -21,9 +24,33 @@ def create_app() -> Flask:
 
     init_db()
 
+    @app.context_processor
+    def inject_common_links() -> dict[str, str]:
+        return {"telegram_link": TELEGRAM_LINK}
+
     @app.route("/")
     def index() -> str:
-        return render_template("index.html")
+        return render_template("index.html", form={})
+
+    @app.route("/about")
+    def about() -> str:
+        return render_template("about.html")
+
+    @app.route("/subjects")
+    def subjects() -> str:
+        return render_template("subjects.html")
+
+    @app.route("/formats")
+    def formats() -> str:
+        return render_template("formats.html")
+
+    @app.route("/faq")
+    def faq() -> str:
+        return render_template("faq.html")
+
+    @app.route("/privacy")
+    def privacy() -> str:
+        return render_template("privacy.html")
 
     @app.route("/booking", methods=["GET", "POST"])
     def booking() -> str:
@@ -31,6 +58,7 @@ def create_app() -> Flask:
             form = {
                 "name": request.form.get("name", "").strip(),
                 "contact": request.form.get("contact", "").strip(),
+                "student_age": request.form.get("student_age", "").strip(),
                 "subject": request.form.get("subject", "").strip(),
                 "lesson_time": request.form.get("lesson_time", "").strip(),
                 "comment": request.form.get("comment", "").strip(),
@@ -67,12 +95,16 @@ def init_db() -> None:
                 created_at TEXT NOT NULL,
                 name TEXT NOT NULL,
                 contact TEXT NOT NULL,
+                student_age TEXT NOT NULL DEFAULT '',
                 subject TEXT NOT NULL,
                 lesson_time TEXT NOT NULL,
                 comment TEXT
             )
             """
         )
+        columns = [row[1] for row in conn.execute("PRAGMA table_info(lesson_requests)")]
+        if "student_age" not in columns:
+            conn.execute("ALTER TABLE lesson_requests ADD COLUMN student_age TEXT NOT NULL DEFAULT ''")
 
 
 def save_request(form: dict[str, str]) -> None:
@@ -80,13 +112,14 @@ def save_request(form: dict[str, str]) -> None:
     with sqlite3.connect(DB_PATH) as conn:
         conn.execute(
             """
-            INSERT INTO lesson_requests (created_at, name, contact, subject, lesson_time, comment)
-            VALUES (?, ?, ?, ?, ?, ?)
+            INSERT INTO lesson_requests (created_at, name, contact, student_age, subject, lesson_time, comment)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 created_at,
                 form["name"],
                 form["contact"],
+                form["student_age"],
                 form["subject"],
                 form["lesson_time"],
                 form["comment"],
@@ -102,6 +135,7 @@ def send_to_telegram(form: dict[str, str], token: str, chat_id: str) -> bool:
         "📚 Новая заявка на занятие\n"
         f"Имя: {form['name']}\n"
         f"Контакт: {form['contact']}\n"
+        f"Возраст ученика: {form['student_age']}\n"
         f"Предмет: {form['subject']}\n"
         f"Время: {form['lesson_time']}\n"
         f"Комментарий: {form['comment'] or '-'}"
